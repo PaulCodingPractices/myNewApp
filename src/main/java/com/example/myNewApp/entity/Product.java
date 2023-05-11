@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
+import java.util.List;
 @Setter
 @Getter
 @AllArgsConstructor
@@ -25,8 +25,14 @@ public class Product {
     private Category category;
 
     private String description;
-    //private List<Attribute> attributes;
 
+    @ManyToMany
+    @JoinTable(
+            name = "product_attribute",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id")
+    )
+    private List<Attribute> attributes;
 
     @Column(name = "price_nett")
     private Double priceNett;
@@ -34,4 +40,9 @@ public class Product {
     @Column(name = "price_gross")
     private Double priceGross;
 
+    public Product(String name, Double priceNett) {
+        this.name = name;
+        this.priceNett = priceNett;
+        this.priceGross = priceNett * 1.2; // Assuming a tax rate of 20%
+    }
 }

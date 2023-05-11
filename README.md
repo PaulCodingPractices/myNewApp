@@ -1,2 +1,2 @@
 # myNewApp
- spring boot app, secound version after first failed miserably
+ Readmy will be added after the app comes to life

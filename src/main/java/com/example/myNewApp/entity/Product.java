@@ -43,6 +43,6 @@ public class Product {
     public Product(String name, Double priceNett) {
         this.name = name;
         this.priceNett = priceNett;
-        this.priceGross = priceNett * 1.2; // Assuming a tax rate of 20%
+        this.priceGross = priceNett * 1.2;
     }
 }

@@ -2,8 +2,9 @@ package com.example.myNewApp.service;
 
 import com.example.myNewApp.dto.ProductDTO;
 import com.example.myNewApp.entity.Product;
-import com.example.myNewApp.repositories.ProductRepository;
 import com.example.myNewApp.mapper.ProductMapper;
+import com.example.myNewApp.repositories.ProductRepository;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,10 @@ public class ProductService {
         List<Product> products = productRepository.findAll();
         return productMapper.toDtoList(products);
     }
+    public ProductDTO getProductById(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + id));
+        return productMapper.toDto(product);
+    }
 
-    // Additional methods like getProductById, saveProduct, deleteProduct can go here
 }

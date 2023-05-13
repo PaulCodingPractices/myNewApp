@@ -1,7 +1,7 @@
 package com.example.myNewApp.config;
 
-import com.example.myNewApp.entity.Product;
-import com.example.myNewApp.repositories.ProductRepository;
+import com.example.myNewApp.dto.ProductDTO;
+import com.example.myNewApp.service.ProductService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +10,62 @@ import org.springframework.context.annotation.Configuration;
 public class DataLoader {
 
     @Bean
-    CommandLineRunner initDatabase(ProductRepository productRepository) {
+    CommandLineRunner initDatabase(ProductService productService) {
         return args -> {
-            productRepository.save(new Product("The Witcher 3: Wild Hunt", 19.99));
-            productRepository.save(new Product("Cyberpunk 2077", 59.99));
-            productRepository.save(new Product("Red Dead Redemption 2", 39.99));
+            /*** Updating this in the future , currently problems with compatibility
+             * productService.saveProduct(ProductDTO.builder()
+                    .name("The Witcher 3: Wild Hunt")
+                    .priceNett(19.99)
+                    .priceGross(19.99 * 1.2)
+                    .quantity(1)
+                    .build());
+
+            productService.saveProduct(ProductDTO.builder()
+                    .name("Cyberpunk 2077")
+                    .priceNett(59.99)
+                    .priceGross(59.99 * 1.2)
+                    .quantity(1)
+                    .build());
+
+            productService.saveProduct(ProductDTO.builder()
+                    .name("Red Dead Redemption 2")
+                    .priceNett(39.99)
+                    .priceGross(39.99 * 1.2)
+                    .quantity(1)
+                    .build());
+             */
+            productService.saveProduct(new ProductDTO(
+                    null,
+                    "The Witcher 3: Wild Hunt",
+                    null,
+                    null,
+                    null,
+                    19.99,
+                    19.99 * 1.2,
+                    1
+            ));
+
+            productService.saveProduct(new ProductDTO(
+                    null,
+                    "Cyberpunk 2077",
+                    null,
+                    null,
+                    null,
+                    59.99,
+                    59.99 * 1.2,
+                    1
+            ));
+
+            productService.saveProduct(new ProductDTO(
+                    null,
+                    "Red Dead Redemption 2",
+                    null,
+                    null,
+                    null,
+                    39.99,
+                    39.99 * 1.2,
+                    1
+            ));
         };
     }
 }

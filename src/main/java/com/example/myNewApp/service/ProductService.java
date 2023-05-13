@@ -5,6 +5,7 @@ import com.example.myNewApp.entity.Product;
 import com.example.myNewApp.mapper.ProductMapper;
 import com.example.myNewApp.repositories.ProductRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,24 @@ public class ProductService {
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id " + id));
         return productMapper.toDto(product);
     }
+    public ProductDTO saveProduct(@NotNull ProductDTO productDTO) {
+        Product product;
 
+        if (productDTO.getId() != null && productRepository.existsById(productDTO.getId())) {
+            product = productRepository.findById(productDTO.getId()).get();
+            product.setQuantity(product.getQuantity() + productDTO.getQuantity());
+        } else {
+            product = productMapper.toEntity(productDTO);
+            product.setQuantity(productDTO.getQuantity()); // Set initial quantity
+        }
+
+        Product savedProduct = productRepository.save(product);
+        return productMapper.toDto(savedProduct);
+    }
+    public void deleteProduct(Long id) {
+        if(!productRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Product not found with id " + id);
+        }
+        productRepository.deleteById(id);
+    }
 }

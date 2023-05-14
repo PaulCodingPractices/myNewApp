@@ -37,7 +37,7 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<UserProductMapper> userProducts;
 
-    // existing getters and setters
+
 
     public List<UserProductMapper> getUserProducts() {
         return userProducts;

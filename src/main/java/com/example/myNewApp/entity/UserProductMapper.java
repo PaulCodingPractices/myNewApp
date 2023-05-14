@@ -18,7 +18,5 @@ public class UserProductMapper {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    // you can add more fields here, such as quantity, price at the time of purchase, etc.
 
-    // getters and setters
 }

@@ -23,6 +23,6 @@ public class Adress {
     private String city;
     private String zip;
 
-//    private User user;
+
 
 }

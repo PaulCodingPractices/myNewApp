@@ -17,7 +17,7 @@ public class Order {
     private Long userId;
 
     @Column(name = "order_date")
-    private String date; //change later for LocalDate or smth like that
+    private String date;
 
     @Column(name = "total_value")
     private double totalValue;

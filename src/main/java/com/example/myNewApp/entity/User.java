@@ -31,7 +31,7 @@ public class User {
 
     }
 
-    // existing getters and setters
+
 
     public List<UserProductMapper> getUserProducts() {
         return userProducts;

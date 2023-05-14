@@ -1,17 +1,9 @@
 package com.example.myNewApp.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.List;
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "product")
 public class Product {
@@ -42,6 +34,18 @@ public class Product {
 
     private Integer quantity;
 
+    @OneToMany(mappedBy = "product")
+    private List<UserProductMapper> userProducts;
+
+    // existing getters and setters
+
+    public List<UserProductMapper> getUserProducts() {
+        return userProducts;
+    }
+
+    public void setUserProducts(List<UserProductMapper> userProducts) {
+        this.userProducts = userProducts;
+    }
     public Product() {
     }
 

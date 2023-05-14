@@ -1,15 +1,9 @@
 package com.example.myNewApp.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
-@Setter
-@Getter
-@AllArgsConstructor
 
 /***
  * Entity that stores information about users adress information, and to added it to database.

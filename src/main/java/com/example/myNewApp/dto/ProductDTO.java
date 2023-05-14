@@ -1,13 +1,10 @@
 package com.example.myNewApp.dto;
 
 import com.example.myNewApp.entity.Category;
-import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
-@Builder
+
 public class ProductDTO {
 
     private Long id;
@@ -18,6 +15,8 @@ public class ProductDTO {
     private Double priceNett;
     private Double priceGross;
     private Integer quantity;
+
+    private List<UserDTO> users;
 
     public ProductDTO() {
     }

@@ -1,5 +1,5 @@
-INSERT INTO users(id, first_name, last_name, email, password, adress_id)
-VALUES ( 1, 'Marian', 'Kowalski', 'marian@kowalski.com', 'password', 1);
+INSERT INTO users(id, first_name, last_name, email, password)
+VALUES ( 1, 'Marian', 'Kowalski', 'marian@kowalski.com', 'password');
 
 INSERT INTO adress(id, country, address, state, city, zip)
 VALUES ( 1, 'Polska' , 'Garncarska 17a', 'Pomorskie', 'Gdańsk', '12-345');
